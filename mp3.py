@@ -32,7 +32,9 @@ def get_download_path():
 
 ffmpeg_path = os.getcwd()
 download_path = get_download_path()
-download_path = os.getcwd()
+
+# add your own DOWNLOAD PATH below
+# download_path = ''
 
 options = {
         # PERMANENT options
