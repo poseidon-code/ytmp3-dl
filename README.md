@@ -1,9 +1,6 @@
 # **mp3-download-script v2.0**
 
-This is a python script that uses a specific python package **youtube-dl**. It will download the audio file from any video/audio link provided during the execution of the program, and if necessary converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster download speeds ⚡.
-
-_**[LEGACY]**\
-[mp3-download-script **v1.0**](https://github.com/poseidon-code/mp3-download-script) is a single-threaded program, so it is much better to use [**mp3-download-script v2.0**](https://github.com/poseidon-code/mp3-download-script-v2) instead of **v1.0**, for ultimate multi-threaded download performance._
+This is a python script that uses a specific python package **youtube-dl**. It will download the audio file from any video/audio link provided during the execution of the program, and if necessary converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
 
 ---
 
