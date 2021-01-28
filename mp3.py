@@ -52,15 +52,20 @@ options = {
     }
 
 
+status = []
 def download(url):
     with youtube_dl.YoutubeDL(options) as mp3:
         info = mp3.extract_info(url, download=False)
-        print('[downloading]\t', info.get('title', None))
+        status.append(f"[downloading]\t {info.get('title', None)}")
+        system('cls')
+        print('*** Downloading', len(sys.argv[1:]), 'musics ***')
+        [print(i) for i in status]
         mp3.download([url])
-        print('[finished]\t', info.get('title', None))
+        status[status.index(f"[downloading]\t {info.get('title', None)}")]=f"[finished]\t {info.get('title', None)}"
+        system('cls')
+        print('*** Downloading', len(sys.argv[1:]), 'musics ***')
+        [print(i) for i in status]
 
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    system('cls')
-    print('*** Downloading', len(sys.argv[1:]), 'musics ***')
     executor.map(download, sys.argv[1:])
