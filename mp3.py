@@ -16,6 +16,12 @@ finally:
     globals()['youtube_dl'] = importlib.import_module('youtube_dl')
 
 
+class color:
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    ENDC = '\033[0m'
+
 
 def get_download_path():
     if os.name == 'nt':
@@ -55,19 +61,34 @@ options = {
 
 
 status = []
+def print_status():
+    system('cls')
+    print('*** Downloading', len(URLS), 'musics ***')
+    [print(item) for item in status]
+
+
 def download(url):
     with youtube_dl.YoutubeDL(options) as mp3:
         info = mp3.extract_info(url, download=False)
-        status.append(f"[downloading]\t {info.get('title', None)}")
-        system('cls')
-        print('*** Downloading', len(sys.argv[1:]), 'musics ***')
-        [print(i) for i in status]
+        title = info.get('title', None)
+
+        color_string = color.WARNING + '[downloading]\t' + color.ENDC + title
+        status[URLS.index(url)] = color_string
+        print_status()
+
         mp3.download([url])
-        status[status.index(f"[downloading]\t {info.get('title', None)}")]=f"[finished]\t {info.get('title', None)}"
-        system('cls')
-        print('*** Downloading', len(sys.argv[1:]), 'musics ***')
-        [print(i) for i in status]
+
+        color_string = color.OKGREEN + '[finished]\t' + color.ENDC + title
+        status[URLS.index(url)] = color_string
+        print_status()
+
+
+URLS = sys.argv[1:]
+
+for url in URLS:
+    color_string = color.OKCYAN + '[starting]\t' + color.ENDC + url
+    status.append(color_string)
 
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    executor.map(download, sys.argv[1:])
+    executor.map(download, URLS)
