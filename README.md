@@ -89,7 +89,6 @@ Various options of downloading can be added directly to the **mp3.py** script. T
 -   Yor code will look like this :
 
     ```python
-    def run():
     options = {
         # PERMANENT options        <--- DON'T CHANGE these options
         'quite': True,
@@ -113,6 +112,16 @@ Various options of downloading can be added directly to the **mp3.py** script. T
     ```
 
 -   The list of all options that can be added are found [here](#Options).
+
+## Adding NEW download path to save downloaded musics
+
+```diff
+40:     download_path = get_download_path()
+41:
+42:     # add your own DOWNLOAD PATH below
+-43:    # download_path = ''
++43:    download_path = 'C:/Musics'
+```
 
 ---
 
