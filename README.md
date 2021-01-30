@@ -116,11 +116,11 @@ Various options of downloading can be added directly to the **mp3.py** script. T
 ## Adding NEW download path to save downloaded musics
 
 ```diff
-40:     download_path = get_download_path()
-41:
-42:     # add your own DOWNLOAD PATH below
--43:    # download_path = ''
-+43:    download_path = 'C:/Musics'
+    40:     download_path = get_download_path()
+    41:
+    42:     # add your own DOWNLOAD PATH below
+-   43:     # download_path = ''
++   43:     download_path = 'C:/Musics'
 ```
 
 ---
