@@ -19,46 +19,46 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 
 ## General
 
--   The system must have **python** installed and set to the global path. _(downlaod [python](https://www.python.org/downloads/) as per your Operating System. **check** the 'Add Python to system PATH' option while installing)_
+- The system must have **python** installed and set to the global path. _(downlaod [python](https://www.python.org/downloads/) as per your Operating System. **check** the 'Add Python to system PATH' option while installing)_
 
--   Download the **mp3-download-script** folder from [here](https://github.com/poseidon-code/mp3-download-script/archive/master.zip 'mp3-download-script').
+- Download the **mp3-download-script** folder from [here](https://github.com/poseidon-code/mp3-download-script/archive/master.zip 'mp3-download-script').
 
--   Open up **cmd** (**terminal** for Linux/macOS).
+- Open up **cmd** (**terminal** for Linux/macOS).
 
--   **cd** into the directory where you have downloaded the **mp3-download-script** folder.
+- **cd** into the directory where you have downloaded the **mp3-download-script** folder.
 
-    _**otherwise** if your **DEFAULT** Downloads location is C:\Users\YOUR-PC-NAME\Downloads (as of most Windows PC), then write this in **cmd**._
+  _**otherwise** if your **DEFAULT** Downloads location is C:\Users\YOUR-PC-NAME\Downloads (as of most Windows PC), then write this in **cmd**._
 
-    ```cmd
-    C:\Users\YOUR-PC-NAME> cd downloads\mp3-download-script
-    C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script>
-    ```
+  ```cmd
+  C:\Users\YOUR-PC-NAME> cd downloads\mp3-download-script
+  C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script>
+  ```
 
--   Copy the video URL that you want to download. _e.g.: https://www.youtube.com/watch?v=U2NN3tmCVI8_
+- Copy the video URL that you want to download. _e.g.: https://www.youtube.com/watch?v=U2NN3tmCVI8_
 
--   While inside the **mp3-download-script** directory, run the `python mp3.py` command:
+- While inside the **mp3-download-script** directory, run the `python mp3.py` command:
 
-    ```cmd
-    C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py
-    ```
+  ```cmd
+  C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py
+  ```
 
-    and paste the URL _(mouse right-click)_:
+  and paste the URL _(mouse right-click)_:
 
-    ```cmd
-    C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8
-    ```
+  ```cmd
+  C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8
+  ```
 
-    you can add multiple URLs _(just add space between URLs)_:
+  you can add multiple URLs _(just add space between URLs)_:
 
-    ```cmd
-    C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8 https://www.youtube.com/watch?v=kddC4gi72UE
-    ```
+  ```cmd
+  C:\Users\YOUR-PC-NAME\Downloads\mp3-download-script> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8 https://www.youtube.com/watch?v=kddC4gi72UE
+  ```
 
-    then press **Enter**.
+  then press **Enter**.
 
--   All the files will be downloaded to the **DEFAULT** Downloads location : _C:\Users\YOUR-PC-NAME\Downloads (as of most Windows OS)_
+- All the files will be downloaded to the **DEFAULT** Downloads location : _C:\Users\YOUR-PC-NAME\Downloads (as of most Windows OS)_
 
--   You are GOOD NOW 😊
+- You are GOOD NOW 😊
 
 ---
 
@@ -82,46 +82,36 @@ Here are the list of OPTIONS that can be added by the End User for better custom
 
 Various options of downloading can be added directly to the **mp3.py** script. To add custom options, follow these steps _(make sure **python** is installed in your system & PATH is set)_:
 
--   Open **mp3.py** with a suitable text editor.
--   Press **Ctrl + F** or start **Find** feature of your editor and search for **" OPTIONAL "**.
--   Under **OPTIONAL** you can add multitude of Custom Options to make your script unique.
--   Enter your desired options by adding a ' **,** ' _(comma)_ at the end of every option you add.
--   Yor code will look like this :
+- Open **mp3.py** with a suitable text editor.
+- Press **Ctrl + F** or start **Find** feature of your editor and search for **" OPTIONAL "**.
+- Under **OPTIONAL** you can add multitude of Custom Options to make your script unique.
+- Enter your desired options by adding a ' **,** ' _(comma)_ at the end of every option you add.
+- Yor code will look like this :
 
-    ```python
-    options = {
-        # PERMANENT options        <--- DON'T CHANGE these options
-        'quite': True,
-        'format': 'bestaudio/best',
-        'ffmpeg_location': f'{ffmpeg_path}/ffmpeg.exe',
-        'keepvideo': False,
-        'outtmpl': f'{download_path}/%(title)s.bin',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '320'
-        }],
+  ```python
+  options = {
+      # PERMANENT options        <--- DON'T CHANGE these options
+      'quite': True,
+      'format': 'bestaudio/best',
+      'ffmpeg_location': f'{ffmpeg_path}/ffmpeg.exe',
+      'keepvideo': False,
+      'outtmpl': f'{download_path}/%(title)s.bin',
+      'postprocessors': [{
+          'key': 'FFmpegExtractAudio',
+          'preferredcodec': 'mp3',
+          'preferredquality': '320'
+      }],
 
-        #(OPTIONAL options)        <--- ADD options from here
-        'noplaylist': True,
-        'options': 'value',
-            .       .
-            .       .
-            .       .
-    }
-    ```
+      #(OPTIONAL options)        <--- ADD options from here
+      'noplaylist': True,
+      'options': 'value',
+          .       .
+          .       .
+          .       .
+  }
+  ```
 
--   The list of all options that can be added are found [here](#Options).
-
-## Adding NEW download path to save downloaded musics
-
-```diff
-    40:     download_path = get_download_path()
-    41:
-    42:     # add your own DOWNLOAD PATH below
--   43:     # download_path = ''
-+   43:     download_path = 'C:/Musics'
-```
+- The list of all options that can be added are found [here](#Options).
 
 ---
 
@@ -129,9 +119,9 @@ Various options of downloading can be added directly to the **mp3.py** script. T
 
 ## Authors
 
--   _Creator of **mp3-download-script-v2.0**_ : [poseidon-code](http://github.com/poseidon-code)
--   _Creator of **youtube-dl** library_ : [ytdl-org](http://www.github.com/ytdl-org)
--   _Creator of **ffmpeg** converter_ : [ffmpeg Team](http://ffmpeg.org)
+- _Creator of **mp3-download-script-v2.0**_ : [poseidon-code](http://github.com/poseidon-code)
+- _Creator of **youtube-dl** library_ : [ytdl-org](http://www.github.com/ytdl-org)
+- _Creator of **ffmpeg** converter_ : [ffmpeg Team](http://ffmpeg.org)
 
 ---
 
