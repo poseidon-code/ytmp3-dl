@@ -1,20 +1,9 @@
 import sys
-import pip
 import os
-import importlib
-import subprocess
 import concurrent.futures
 from os import system
-
-
-try:
-    importlib.import_module('youtube_dl')
-except ModuleNotFoundError:
-    print('[***]\t Installing youtube-dl python package...')
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'youtube-dl'])
-finally:
-    globals()['youtube_dl'] = importlib.import_module('youtube_dl')
-
+import youtube_dl
+import getopt
 
 class color:
     OKCYAN = '\033[96m'
@@ -34,36 +23,10 @@ def get_download_path():
     else:
         return os.path.join(os.path.expanduser('~'), 'downloads')
 
-
-
-ffmpeg_path = os.getcwd()
-download_path = get_download_path()
-
-# add your own DOWNLOAD PATH below
-# download_path = ''
-
-options = {
-        # PERMANENT options
-        'quiet': True,
-        'format': 'bestaudio/best',
-        'ffmpeg_location': f'{ffmpeg_path}/ffmpeg.exe',
-        'keepvideo': False,
-        'outtmpl': f'{download_path}/%(title)s.bin',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '320'
-        }],
-
-        # OPTIONAL options
-        'noplaylist': True
-    }
-
-
-status = []
 def print_status():
     system('cls')
     print('*** Downloading', len(URLS), 'musics ***')
+    print('*** Download Directory : ', download_path , '***')
     [print(item) for item in status]
 
 
@@ -83,7 +46,37 @@ def download(url):
         print_status()
 
 
-URLS = sys.argv[1:]
+
+status = []
+arguments = sys.argv[1:]
+
+try:
+    options, URLS = getopt.getopt(arguments, 'd:', ['dir='])
+except:
+    pass
+
+download_path=get_download_path()
+for option, value in options:
+    if option in ['-d', '--dir']:
+        download_path = value
+
+
+options = {
+        # PERMANENT options
+        'quiet': True,
+        'format': 'bestaudio/best',
+        'ffmpeg_location': 'ffmpeg.exe',
+        'keepvideo': False,
+        'outtmpl': f'{download_path}/%(title)s.bin',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '320'
+        }],
+
+        # OPTIONAL options
+        'noplaylist': True
+    }
 
 for url in URLS:
     color_string = color.OKCYAN + '[starting]\t' + color.ENDC + url
