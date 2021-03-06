@@ -65,7 +65,7 @@ options = {
         # PERMANENT options
         'quiet': True,
         'format': 'bestaudio/best',
-        'ffmpeg_location': 'ffmpeg.exe',
+        'ffmpeg_location': f'{os.path.abspath(os.getcwd())}/ffmpeg.exe', 
         'keepvideo': False,
         'outtmpl': f'{download_path}/%(title)s.bin',
         'postprocessors': [{
