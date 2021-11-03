@@ -36,22 +36,22 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 
 - Copy the video URL that you want to download. _e.g.: https://www.youtube.com/watch?v=U2NN3tmCVI8_
 
-- While inside the **ytmp3-dl** directory, run the `python mp3.py` command:
+- While inside the **ytmp3-dl** directory, run the `python ytmp3-dl.py` command:
 
   ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python mp3.py
+  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py
   ```
 
   and paste the URL _(mouse right-click)_:
 
   ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8
+  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py https://www.youtube.com/watch?v=U2NN3tmCVI8
   ```
 
   you can add multiple URLs _(just add space between URLs)_:
 
   ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python mp3.py https://www.youtube.com/watch?v=U2NN3tmCVI8 https://www.youtube.com/watch?v=kddC4gi72UE
+  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py https://www.youtube.com/watch?v=U2NN3tmCVI8 https://www.youtube.com/watch?v=kddC4gi72UE
   ```
 
   then press **Enter**.
@@ -80,9 +80,9 @@ Here are the list of OPTIONS that can be added by the End User for better custom
 
 ## Customizing
 
-Various options of downloading can be added directly to the **mp3.py** script. To add custom options, follow these steps _(make sure **python** is installed in your system & PATH is set)_:
+Various options of downloading can be added directly to the **ytmp3-dl.py** script. To add custom options, follow these steps _(make sure **python** is installed in your system & PATH is set)_:
 
-- Open **mp3.py** with a suitable text editor.
+- Open **ytmp3-dl.py** with a suitable text editor.
 - Press **Ctrl + F** or start **Find** feature of your editor and search for **" OPTIONAL "**.
 - Under **OPTIONAL** you can add multitude of Custom Options to make your script unique.
 - Enter your desired options by adding a ' **,** ' _(comma)_ at the end of every option you add.
@@ -119,7 +119,7 @@ Various options of downloading can be added directly to the **mp3.py** script. T
 
 ## Authors
 
-- _Creator of **ytmp3-dl-v2.0**_ : [poseidon-code](http://github.com/poseidon-code)
+- _Creator of **ytmp3-dl**_ : [poseidon-code](http://github.com/poseidon-code)
 - _Creator of **youtube-dl** library_ : [ytdl-org](http://www.github.com/ytdl-org)
 - _Creator of **ffmpeg** converter_ : [ffmpeg Team](http://ffmpeg.org)
 
