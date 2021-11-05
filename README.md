@@ -7,11 +7,13 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 ## **Table Of Contents**
 
 1.  [General](#General)
-2.  [Options](#Options)
-3.  [Customizing](#Customizing)
-4.  [Authors](#Authors)
-5.  [Acknowledgement](#Acknowledgement)
-6.  [License](#License)
+2.  [Advanced Usage](#Advanced-Usage)
+3.  [Release Builds](#Release-Builds)
+4.  [Options](#Options)
+5.  [Customizing](#Customizing)
+6.  [Authors](#Authors)
+7.  [Acknowledgement](#Acknowledgement)
+8.  [License](#License)
 
 ---
 
@@ -30,7 +32,7 @@ This is a python script that uses a specific python package **youtube-dl**. It w
   _**otherwise** if your **DEFAULT** Downloads location is C:\Users\YOUR-PC-NAME\Downloads (as of most Windows PC), then write this in **cmd**._
 
   ```cmd
-  C:\Users\YOUR-PC-NAME> cd downloads\ytmp3-dl
+  C:\Users\YOUR-PC-NAME> cd .\Downloads\ytmp3-dl
   C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl>
   ```
 
@@ -42,7 +44,7 @@ This is a python script that uses a specific python package **youtube-dl**. It w
   C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py
   ```
 
-  and paste the URL _(mouse right-click)_:
+  and paste the URL:
 
   ```cmd
   C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py https://www.youtube.com/watch?v=U2NN3tmCVI8
@@ -62,6 +64,44 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 
 ---
 
+<a name="Advanced-Usage"></a>
+
+## Advanced Usage
+
+You can pass command line arguments while downloading using **ytmp3-dl.py**.
+
+- **[-d, --dir]** \
+  To set a specific **download directory**, use -d (or --dir) options :
+  ```bash
+  $ python ytmp3-dl.py -d ~/Music/ https://www.youtube.com/watch?v=kddC4gi72UE
+  ```
+
+- **[-f, --ffmpeg]** \
+  To set a specific **ffmpeg binary** location, use -f (or --ffmpeg) options :
+  ```bash
+  $ python ytmp3-dl.py -f ~/.local/bin/ffmpeg https://www.youtube.com/watch?v=kddC4gi72UE
+  ```
+
+- You can use all at the same time :
+  ```bash
+  $ python ytmp3-dl.py -d ~/Music/ -f ~/.local/bin/ffmpeg https://www.youtube.com/watch?v=kddC4gi72UE
+  ```
+
+---
+<a name="Release-Builds"></a>
+
+## Release Builds
+
+The builds of this program is available for 64-bit versions of Linux, Windows, macOS (Darwin) Operating Systems. These build does not require one to have python (and even ffmpeg) installed. You can download them from [here](https://github.com/poseidon-code/ytmp3-dl/releases/tag/v2.1).
+
+> **[-base-]: Base Version** \
+  This version does not includes ffmpeg binaries, and relies on ffmpeg which is already installed in the user's Operating System. _([Download & Install ffmpeg](https://ffmpeg.org/download.html))_
+
+> **[-essentials-]: Essentials Version** \
+  This version comes with compatible ffmpeg binaries, and does not relies on ffmpeg being installed on the Operating System. _(**i.e.** If you don't want to go with the hassel of downloading, installing, setting PATH for ffmpeg, then go with this version.)_
+
+---
+
 <a name="Options"></a>
 
 ## Options
@@ -72,7 +112,9 @@ Here are the list of OPTIONS that can be added by the End User for better custom
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | noplaylist  | **True;** DOES NOT downloads the whole playlist if the video URL provided is that of a video in a playlist. _(default: **False**)_ |
 | yesplaylist | **False;** DOES NOT downloads the whole playlist if the video URL provided is that of a video in a playlist. _(default: **True**)_ |
-| cachedir    | **True;** ENABLES filesystem caching _(default: **False**)_                                                                        |
+| cachedir    | **True;** ENABLES filesystem caching _(default: **False**)_|
+
+> More options can be added to **youtube-dl** as per your preference. Check all **youtude-dl** options [here](https://github.com/ytdl-org/youtube-dl#options).
 
 ---
 
@@ -111,7 +153,7 @@ Various options of downloading can be added directly to the **ytmp3-dl.py** scri
   }
   ```
 
-- The list of all options that can be added are found [here](#Options).
+- The list of all options that can be added are found [here](#Options). _(more options can be added to youtube-dl as per your preference, check all youtude-dl options [here](https://github.com/ytdl-org/youtube-dl#options))_
 
 ---
 
@@ -129,7 +171,7 @@ Various options of downloading can be added directly to the **ytmp3-dl.py** scri
 
 ## Acknowledgement
 
-This script is made by poseidon-code using _python_ programming language, _youtube-dl_ python library and _ffmepeg_ media conversion utility for General Use in Public Domain.
+This script is made by poseidon-code using _**python**_ programming language, _**youtube-dl**_ python library and _**ffmepeg**_ media conversion utility for General Use in Public Domain.
 
 <a name="License"></a>
 
