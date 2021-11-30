@@ -9,12 +9,14 @@ import sys
 import yt_dlp
 
 
+# color codes
 class color:
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
     ERROR = '\033[91m'
     ENDC = '\033[0m'
+
 
 # clear terminal
 def clear():
@@ -40,7 +42,7 @@ def get_download_path():
 
 
 ''' Set ffmpeg binary location '''
-def get_ffmpeg_location(path=''):
+def get_ffmpeg_path(path=''):
     # if, ffmpeg path is passed from command line arguements
     if path!='':
         # if, passed path exists
@@ -80,7 +82,7 @@ def get_ffmpeg_location(path=''):
 def print_status():
     clear()
     print('*** Downloading', len(URLS), 'musics ***')
-    print('*** Using ffmpeg at :', ffmpeg_location, '***')
+    print('*** Using ffmpeg at :', ffmpeg_path, '***')
     print('*** Download Directory : ', download_path , '***')
     [print(item) for item in status]
 
@@ -107,13 +109,12 @@ def download(url):
 
 ''' driver code '''
 status = []
-arguments = sys.argv[1:]
-options, URLS = getopt.getopt(arguments, 'f:d:', ['ffmpeg=', 'dir='])   # parse command line options
+options, URLS = getopt.getopt(sys.argv[1:], 'f:d:', ['ffmpeg=', 'dir='])   # parse command line options
 
 
 if len(options)==0:
     # set deafult value to options
-    ffmpeg_location = get_ffmpeg_location()
+    ffmpeg_path = get_ffmpeg_path()
     download_path = get_download_path()
 else:
     # set user specified values to options
@@ -121,8 +122,8 @@ else:
         if option in ['-d', '--dir'] : download_path = value
         else : download_path = get_download_path()
         
-        if option in ['-f', '--ffmpeg'] : ffmpeg_location = get_ffmpeg_location(value)
-        else : ffmpeg_location = get_ffmpeg_location()
+        if option in ['-f', '--ffmpeg'] : ffmpeg_path = get_ffmpeg_path(value)
+        else : ffmpeg_path = get_ffmpeg_path()
 
 
 ''' youtube-dl options '''
@@ -130,7 +131,7 @@ options = {
         # PERMANENT options
         'quiet': True,
         'format': 'bestaudio/best',
-        'ffmpeg_location': ffmpeg_location,
+        'ffmpeg_location': ffmpeg_path,
         'keepvideo': False,
         'outtmpl': f'{download_path}/%(title)s.webm',
         'postprocessors': [{
