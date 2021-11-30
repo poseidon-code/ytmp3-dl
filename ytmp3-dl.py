@@ -6,7 +6,7 @@ import os
 import platform
 import sys
 
-import youtube_dl
+import yt_dlp
 
 
 class color:
@@ -88,7 +88,7 @@ def print_status():
 
 '''Downloading mp3 for every YouTube video URL passed during execution'''
 def download(url):
-    with youtube_dl.YoutubeDL(options) as mp3:
+    with yt_dlp.YoutubeDL(options) as mp3:
         info = mp3.extract_info(url, download=False)
         title = info.get('title', None)
 
@@ -127,7 +127,7 @@ for option, value in options:
 # if no command line options are passed 
 # (this check is used, as when no command line options are passed, the 'ffmpeg_location' variable remains undefined,
 # it remains undefined because if 'get_ffmpeg_location()' is used before checking the ffmpeg path passed from command line 
-# i.e. line:111 : ffmpeg_location = get_ffmpeg_location(),
+# i.e. line:124 : ffmpeg_location = get_ffmpeg_location(),
 # it may exit the program without even parsing the command line options, when ffmpeg is not present in predefined locations in this program)
 if len(options)==0:
     ffmpeg_location = get_ffmpeg_location()     # evaluate & set ffmpeg path (if no path available, program exits)
@@ -141,7 +141,7 @@ options = {
         'format': 'bestaudio/best',
         'ffmpeg_location': ffmpeg_location,
         'keepvideo': False,
-        'outtmpl': f'{download_path}/%(title)s.bin',
+        'outtmpl': f'{download_path}/%(title)s.webm',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
