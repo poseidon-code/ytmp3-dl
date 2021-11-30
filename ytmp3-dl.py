@@ -46,9 +46,7 @@ def get_ffmpeg_location(path=''):
         # if, passed path exists
         if os.path.exists(path) : return path
         # else, the passed ffmpeg path is invalid, exits program
-        else:
-            print(color.ERROR, 'ffmpeg at', value, 'NOT FOUND', color.ENDC)
-            exit(0)
+        else : print(color.ERROR + 'ffmpeg at `' + path + '` NOT FOUND' + color.ENDC); exit(0)
 
     # else if, use the ffmpeg which is already installed by some Operating System's package manager
     elif os.path.exists('/usr/bin/ffmpeg'):
@@ -64,15 +62,16 @@ def get_ffmpeg_location(path=''):
             return f'{os.path.abspath(os.getcwd())}/ffmpeg/linux/ffmpeg'
 
     # else, if using "ytmp3-dl-base" release version which does not contains ffmpeg binaries,
-    # neither a ffmpeg binary location path is passed,
-    # nor ffmpeg is installed
+    # neither a ffmpeg binary location path is passed nor ffmpeg is installed
     else:
-        print(color.ERROR, 'ffmpeg NOT FOUND.', color.ENDC,
+        print(color.ERROR + 'ffmpeg NOT FOUND.' + color.ENDC,
             '\nIf you are using', color.OKCYAN, '"ytmp3-dl-base"',color.ENDC, 'version, unless valid "ffmpeg" binary location path is passed during execution (-f /path/to/ffmpeg),',
             '\nthis program will not run, as this version does not comes with ffmpeg and its required tools & binaries.',
             '\nYou have to install them seperately for your operating system.',
             '\nhttps://ffmpeg.org/download.html',
-            '\n\nYou can always use', color.OKCYAN, '"ytmp3-dl-essentials"', color.ENDC, 'version for every needs, although this comes with extra packages giving it more overall download size.')
+            '\n\nYou can always use', color.OKCYAN, '"ytmp3-dl-essentials"', color.ENDC, 'version for every needs, although this comes with extra packages giving it more overall download size.',
+            '\nCheck out the release version for your specific OS here : https://github.com/poseidon-code/ytmp3-dl/releases',
+            '\nand download your "ytmp3-dl-essentials" version.')
         exit(0)
 
 
@@ -81,6 +80,7 @@ def get_ffmpeg_location(path=''):
 def print_status():
     clear()
     print('*** Downloading', len(URLS), 'musics ***')
+    print('*** Using ffmpeg at :', ffmpeg_location, '***')
     print('*** Download Directory : ', download_path , '***')
     [print(item) for item in status]
 
