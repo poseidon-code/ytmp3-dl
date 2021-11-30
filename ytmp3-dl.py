@@ -25,7 +25,7 @@ def clear():
 
 
 
-''' Set default download directory '''
+''' Set default download directory (-d, --dir) '''
 def get_download_path():
     # for windows : get default Downloads directory from registry, as USERNAME of the system is required
     if os.name == 'nt':
@@ -41,7 +41,7 @@ def get_download_path():
 
 
 
-''' Set ffmpeg binary location '''
+''' Set ffmpeg binary location (-f, --ffmpeg) '''
 def get_ffmpeg_path(path=''):
     # if, ffmpeg path is passed from command line arguements
     if path!='':
@@ -78,6 +78,21 @@ def get_ffmpeg_path(path=''):
 
 
 
+''' Show help of ytmp3-dl (-h, --help) '''
+def usage():
+    print("Python script for multi-threaded download of audio from any YouTube video/audio link provided during the runtime,",
+    "\nand if necessary converts it to .mp3 format of high quality. It is a wrapper over yt-dlp Python library.",
+    "\nCheck out the project on Github : https://github.com/poseidon-code/ytmp3-dl")
+
+    print('\n[OPTIONS]',                '\t\t\t[USAGE]')
+    print('-d, --dir [PATH]',           '\t\tset download directory')
+    print('-f, --ffmpeg [PATH]',        '\t\tset the exact path to ffmpeg binary')
+
+    print('\n[FLAGS]',                  '\t\t\t[USAGE]')
+    print('-h, --help',                 '\t\t\tshow help on using the ytmp3-dl CLI')
+
+
+
 ''' Printing on terminal '''
 def print_status():
     clear()
@@ -109,16 +124,19 @@ def download(url):
 
 ''' driver code '''
 status = []
-options, URLS = getopt.getopt(sys.argv[1:], 'f:d:', ['ffmpeg=', 'dir='])   # parse command line options
+options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:', ['help', 'ffmpeg=', 'dir='])   # parse command line options
 
 
 if len(options)==0:
     # set deafult value to options
+    playlist = True
     ffmpeg_path = get_ffmpeg_path()
     download_path = get_download_path()
 else:
     # set user specified values to options
     for option, value in options:
+        if option in ['-h', '--help'] : usage(); exit()
+
         if option in ['-d', '--dir'] : download_path = value
         else : download_path = get_download_path()
         
