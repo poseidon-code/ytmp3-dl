@@ -96,7 +96,7 @@ def usage():
 ''' Printing on terminal '''
 def print_status():
     clear()
-    print('*** Downloading', len(URLS), 'musics ***')
+    print('*** Downloading', len(URLS), 'music' if len(URLS)==1 else 'musics', '***')
     print('*** Using ffmpeg at :', ffmpeg_path, '***')
     print('*** Download Directory : ', download_path , '***')
     [print(item) for item in status]
