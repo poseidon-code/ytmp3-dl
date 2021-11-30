@@ -44,7 +44,7 @@ def get_ffmpeg_location(path=''):
     # if, ffmpeg path is passed from command line arguements
     if path!='':
         # if, passed path exists
-        if os.path.exists(path) : return path
+        if os.path.exists(path) and (path.split('/')[-1] in ['ffmpeg', 'ffmpeg.exe']) : return path
         # else, the passed ffmpeg path is invalid, exits program
         else : print(color.ERROR + 'ffmpeg at `' + path + '` NOT FOUND' + color.ENDC); exit(0)
 
@@ -111,27 +111,18 @@ arguments = sys.argv[1:]
 options, URLS = getopt.getopt(arguments, 'f:d:', ['ffmpeg=', 'dir='])   # parse command line options
 
 
-download_path=get_download_path()   # first set default download path
-for option, value in options:
-    if option in ['-d', '--dir']:   # if download directory option was passed
-        download_path = value       # set download path to passed path from command line
-
-
-for option, value in options:
-    if option in ['-f', '--ffmpeg']:                    # first check if any ffmpeg path is passed from command line
-        ffmpeg_location = get_ffmpeg_location(value)    # evaluate & set that path (if invalid, program exits)
-    else:                                               # if no ffmpeg path is passed from command line
-        ffmpeg_location = get_ffmpeg_location()         # evaluate & set ffmpeg path (if no path available, program exits)
-
-
-# if no command line options are passed 
-# (this check is used, as when no command line options are passed, the 'ffmpeg_location' variable remains undefined,
-# it remains undefined because if 'get_ffmpeg_location()' is used before checking the ffmpeg path passed from command line 
-# i.e. line:124 : ffmpeg_location = get_ffmpeg_location(),
-# it may exit the program without even parsing the command line options, when ffmpeg is not present in predefined locations in this program)
 if len(options)==0:
-    ffmpeg_location = get_ffmpeg_location()     # evaluate & set ffmpeg path (if no path available, program exits)
-
+    # set deafult value to options
+    ffmpeg_location = get_ffmpeg_location()
+    download_path = get_download_path()
+else:
+    # set user specified values to options
+    for option, value in options:
+        if option in ['-d', '--dir'] : download_path = value
+        else : download_path = get_download_path()
+        
+        if option in ['-f', '--ffmpeg'] : ffmpeg_location = get_ffmpeg_location(value)
+        else : ffmpeg_location = get_ffmpeg_location()
 
 
 ''' youtube-dl options '''
