@@ -105,7 +105,7 @@ def print_status():
 
 '''Downloading mp3 for every YouTube video URL passed during execution'''
 def download(url):
-    with yt_dlp.YoutubeDL(options) as mp3:
+    with yt_dlp.YoutubeDL(yt_dlp_options) as mp3:
         info = mp3.extract_info(url, download=False)
         title = info.get('title', None)
 
@@ -124,17 +124,16 @@ def download(url):
 
 ''' driver code '''
 status = []
-options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:', ['help', 'ffmpeg=', 'dir='])   # parse command line options
+cli_options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:', ['help', 'ffmpeg=', 'dir='])   # parse command line options
 
 
-if len(options)==0:
+if len(cli_options)==0:
     # set deafult value to options
-    playlist = True
     ffmpeg_path = get_ffmpeg_path()
     download_path = get_download_path()
 else:
     # set user specified values to options
-    for option, value in options:
+    for option, value in cli_options:
         if option in ['-h', '--help'] : usage(); exit()
 
         if option in ['-d', '--dir'] : download_path = value
@@ -145,7 +144,7 @@ else:
 
 
 ''' youtube-dl options '''
-options = {
+yt_dlp_options = {
         # PERMANENT options
         'quiet': True,
         'format': 'bestaudio/best',
@@ -159,7 +158,8 @@ options = {
         }],
 
         # OPTIONAL options
-        'noplaylist': True
+        'noplaylist': True,
+        'noprogress': True,
     }
 
 
