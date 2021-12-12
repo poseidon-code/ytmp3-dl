@@ -48,7 +48,7 @@ def get_ffmpeg_path(path=''):
         # if, passed path exists
         if os.path.exists(path) and (path.split('/')[-1] in ['ffmpeg', 'ffmpeg.exe']) : return path
         # else, the passed ffmpeg path is invalid, exits program
-        else : print(color.ERROR + 'ffmpeg at `' + path + '` NOT FOUND' + color.ENDC); exit(0)
+        else : print(f"{color.ERROR}ffmpeg at `{path}` NOT FOUND{color.ENDC}"); exit(0)
 
     # else if, use the ffmpeg which is already installed by some Operating System's package manager
     elif os.path.exists('/usr/bin/ffmpeg'):
@@ -66,14 +66,25 @@ def get_ffmpeg_path(path=''):
     # else, if using "ytmp3-dl-base" release version which does not contains ffmpeg binaries,
     # neither a ffmpeg binary location path is passed nor ffmpeg is installed
     else:
-        print(color.ERROR + 'ffmpeg NOT FOUND.' + color.ENDC,
-            '\nIf you are using', color.OKCYAN, '"ytmp3-dl-base"',color.ENDC, 'version, unless valid "ffmpeg" binary location path is passed during execution (-f /path/to/ffmpeg),',
-            '\nthis program will not run, as this version does not comes with ffmpeg and its required tools & binaries.',
-            '\nYou have to install them seperately for your operating system.',
-            '\nhttps://ffmpeg.org/download.html',
-            '\n\nYou can always use', color.OKCYAN, '"ytmp3-dl-essentials"', color.ENDC, 'version for every needs, although this comes with extra packages giving it more overall download size.',
-            '\nCheck out the release version for your specific OS here : https://github.com/poseidon-code/ytmp3-dl/releases',
-            '\nand download your "ytmp3-dl-essentials" version.')
+        print(
+                f"{color.ERROR}ffmpeg NOT FOUND.{color.ENDC}"
+        '\n'    f"If you are using {color.OKCYAN}'ytmp3-dl-base'{color.ENDC} version,"
+        '\n'    f"unless valid 'ffmpeg' binary location path is passed during execution (-f /path/to/ffmpeg)"
+        '\n'    f"this program will not run, as this version does not comes with ffmpeg and its required tools & binaries."
+        '\n'    f"You have to install them seperately for your operating system."
+        '\n'    f"https://ffmpeg.org/download.html"
+        
+        '\n\n'  f"You can always use {color.OKCYAN}'ytmp3-dl-essentials'{color.ENDC} version for every needs and hassel free setup,"
+        '\n'    f"although this comes with extra packages giving it more overall download size."
+        '\n'    f"Check out the release version for your specific OS here : https://github.com/poseidon-code/ytmp3-dl/releases"
+        '\n'    f"and download your essentials version."
+        
+        '\n\n'  f"As an alternative you can always download the source code and use the script directly."
+        '\n'    f"Download the source code from here : https://github.com/poseidon-code/ytmp3-dl/archive/refs/heads/main.zip"
+
+        '\n\n'  f"Check out the README.md for more detailed explainations."
+        '\n'    f"https://github.com/poseidon-code/ytmp3-dl"
+        )
         exit(0)
 
 
@@ -96,9 +107,11 @@ def usage():
 ''' Printing on terminal '''
 def print_status():
     clear()
-    print('*** Downloading', len(URLS), 'music' if len(URLS)==1 else 'musics', '***')
-    print('*** Using ffmpeg at :', ffmpeg_path, '***')
-    print('*** Download Directory : ', download_path , '***')
+    print(
+        f"*** Downloading {len(URLS)} {'music' if len(URLS)==1 else 'musics'} ***"      "\n"
+        f"*** Using ffmpeg at : {ffmpeg_path} ***"                                      "\n"
+        f"*** Download Directory : {download_path} ***"
+    )
     [print(item) for item in status]
 
 
@@ -109,14 +122,12 @@ def download(url):
         info = mp3.extract_info(url, download=False)
         title = info.get('title', None)
 
-        color_string = color.WARNING + '[downloading]\t' + color.ENDC + title
-        status[URLS.index(url)] = color_string
+        status[URLS.index(url)] = f"{color.WARNING}[downloading]{color.ENDC}\t {title}"
         print_status()
 
         mp3.download([url])
 
-        color_string = color.OKGREEN + '[finished]\t' + color.ENDC + title
-        status[URLS.index(url)] = color_string
+        status[URLS.index(url)] = f"{color.OKGREEN}[finished]{color.ENDC}\t {title}"
         print_status()
 
 
@@ -164,9 +175,7 @@ yt_dlp_options = {
 
 
 ''' printing download status on terminal '''
-for url in URLS:
-    color_string = color.OKCYAN + '[starting]\t' + color.ENDC + url
-    status.append(color_string)
+for url in URLS : status.append(f"{color.OKCYAN}[starting]{color.ENDC}\t {url}")
 
 
 ''' start download every YouTube URLS passed from command line '''
