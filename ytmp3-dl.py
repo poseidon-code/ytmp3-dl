@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 import concurrent.futures
-from getopt import getopt, GetoptError
 import os
 import platform
 import sys
+from getopt import GetoptError, getopt
 from typing import List, Tuple
 
 import yt_dlp
@@ -92,17 +92,22 @@ def get_ffmpeg_path(path=''):
 
 ''' Show help of ytmp3-dl (-h, --help) '''
 def usage():
-    print("Python script for multi-threaded download of audio from any YouTube video/audio link provided during the runtime,",
-    "\nand if necessary converts it to .mp3 format of high quality. It is a wrapper over yt-dlp Python library.",
-    "\nCheck out the project on Github : https://github.com/poseidon-code/ytmp3-dl")
+    print(
+            f"{color.ERROR}yt{color.WARNING}mp3-dl {color.OKGREEN}v3.0 {color.OKCYAN}~poseidon-code{color.ENDC}"
+    '\n'    f"Python script for multi-threaded download of audio from any YouTube video/audio link provided during the runtime,"
+    '\n'    f"and converts it to .mp3 format of high quality. It is a wrapper over yt-dlp Python library."
+    '\n'    f"Check out the project on Github : https://github.com/poseidon-code/ytmp3-dl"
+    )
 
-    print('\n[OPTIONS]',                '\t\t\t[USAGE]')
-    print('-d, --dir [PATH]',           '\t\tset download directory')
-    print('-f, --ffmpeg [PATH]',        '\t\tset the exact path to ffmpeg binary')
-    print('-l, --limit [NUMBER]',       '\t\tset concurrent download limit')
+    print(
+    '\n'    f"[OPTIONS]                     [USAGE]"
+    '\n'    f"-d, --dir [PATH]              set download directory"
+    '\n'    f"-f, --ffmpeg [PATH]           set the exact path to ffmpeg binary"
+    '\n'    f"-l, --limit [NUMBER]          set concurrent download limit"
 
-    print('\n[FLAGS]',                  '\t\t\t[USAGE]')
-    print('-h, --help',                 '\t\t\tshow help on using the ytmp3-dl CLI')
+    '\n\n'  f"[FLAGS]                       [USAGE]"
+    '\n'    f"-h, --help                    show help on using the ytmp3-dl CLI"
+    )
     exit()
 
 
