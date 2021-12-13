@@ -98,6 +98,7 @@ def usage():
     print('\n[OPTIONS]',                '\t\t\t[USAGE]')
     print('-d, --dir [PATH]',           '\t\tset download directory')
     print('-f, --ffmpeg [PATH]',        '\t\tset the exact path to ffmpeg binary')
+    print('-l, --limit [NUMBER]',       '\t\tset concurrent download limit')
 
     print('\n[FLAGS]',                  '\t\t\t[USAGE]')
     print('-h, --help',                 '\t\t\tshow help on using the ytmp3-dl CLI')
