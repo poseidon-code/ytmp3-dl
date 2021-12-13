@@ -108,10 +108,13 @@ def usage():
 def print_status():
     clear()
     print(
-        f"*** Downloading {len(URLS)} {'music' if len(URLS)==1 else 'musics'} ***"      "\n"
-        f"*** Using ffmpeg at : {ffmpeg_path} ***"                                      "\n"
-        f"*** Download Directory : {download_path} ***"
+            f"{color.ERROR}yt{color.WARNING}mp3-dl {color.OKGREEN}v3.0 {color.OKCYAN}~poseidon-code{color.ENDC}"    
+    '\n'    f"{color.ERROR}|{color.ENDC} URLs                       : {len(URLS)}"
+    '\n'    f"{color.ERROR}|{color.ENDC} Using ffmpeg at            : {ffmpeg_path}"
+    '\n'    f"{color.ERROR}|{color.ENDC} Download Directory         : {download_path}"
+    '\n'    f"{color.ERROR}|{color.ENDC} Concurrent Download Limit  : {limit}"
     )
+    print()
     [print(item) for item in status]
 
 
@@ -135,11 +138,12 @@ def download(url):
 
 ''' driver code '''
 status = []
-cli_options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:', ['help', 'ffmpeg=', 'dir='])   # parse command line options
+cli_options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:l:', ['help', 'ffmpeg=', 'dir=', 'limit='])   # parse command line options
 
 
 if len(cli_options)==0:
     # set deafult value to options
+    limit = 2
     ffmpeg_path = get_ffmpeg_path()
     download_path = get_download_path()
 else:
@@ -152,6 +156,14 @@ else:
         
         if option in ['-f', '--ffmpeg'] : ffmpeg_path = get_ffmpeg_path(value)
         else : ffmpeg_path = get_ffmpeg_path()
+
+        if option in ['-l', '--limit'] : 
+            try : limit = int(value)
+            except ValueError:
+                print(f"{color.ERROR}Invalid limit '{value}'{color.ENDC} (using default 2)")
+                limit = 2
+                pass
+        else : limit = 2
 
 
 ''' youtube-dl options '''
@@ -179,5 +191,5 @@ for url in URLS : status.append(f"{color.OKCYAN}[starting]{color.ENDC}\t {url}")
 
 
 ''' start download every YouTube URLS passed from command line '''
-with concurrent.futures.ThreadPoolExecutor() as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=limit) as executor:
     executor.map(download, URLS)

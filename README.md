@@ -62,6 +62,7 @@ You can pass command line options and flags to **ytmp3-dl**.
 |-----------------------|-------------------------------|---------|
 | `-d`, `--dir` path    | set download directory        | `$ ytmp3-dl -d ~/Music/ <url>`|
 | `-f`, `--ffmpeg` path | set the exact path to ffmpeg  | `$ ytmp3-dl -f ~/.local/bin/ffmpeg <url>` |
+| `-l`, `--limit` number| set concurrent download limit | `$ ytmp3-dl -l 4 <url>`
 
 | FLAGS                 | USAGE                         | EXAMPLE |
 |-----------------------|-------------------------------|---------|
