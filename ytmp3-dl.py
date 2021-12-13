@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import concurrent.futures
-import getopt
+from getopt import getopt, GetoptError
 import os
 import platform
 import sys
+from typing import List, Tuple
 
 import yt_dlp
 
@@ -102,7 +103,7 @@ def usage():
 
     print('\n[FLAGS]',                  '\t\t\t[USAGE]')
     print('-h, --help',                 '\t\t\tshow help on using the ytmp3-dl CLI')
-
+    exit()
 
 
 ''' Printing on terminal '''
@@ -138,10 +139,23 @@ def download(url):
 
 
 ''' driver code '''
-status = []
-cli_options, URLS = getopt.getopt(sys.argv[1:], 'hf:d:l:', ['help', 'ffmpeg=', 'dir=', 'limit='])   # parse command line options
+status: List[str] = []
+cli_options: List[Tuple[str, str]]
+URLS: List[str]
+
+try:  # parse & handle command line options
+    cli_options, URLS = getopt(sys.argv[1:], 'hf:d:l:', ['help', 'ffmpeg=', 'dir=', 'limit='])  
+except GetoptError as e: # exit program by showing ytmp3-dl usage
+    print(e, '\n')
+    usage()
 
 
+# no options or URLs are passed then show ytmp3-dl usage
+if len(cli_options)==0 and len(URLS)==0:
+    usage()
+
+
+# parse and set ytmp3-dl options & flags and proceed to download
 if len(cli_options)==0:
     # set deafult value to options
     limit = 2
@@ -150,7 +164,7 @@ if len(cli_options)==0:
 else:
     # set user specified values to options
     for option, value in cli_options:
-        if option in ['-h', '--help'] : usage(); exit()
+        if option in ['-h', '--help'] : usage()
 
         if option in ['-d', '--dir'] : download_path = value
         else : download_path = get_download_path()
