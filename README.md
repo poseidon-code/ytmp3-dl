@@ -70,7 +70,7 @@ You can pass command line options and flags to **ytmp3-dl**.
 
 
 ## Release Builds
-The builds of this program is available for 64-bit versions of Linux and Windows Operating Systems _(macOS users can download the source code and build it by themselves, see [build instructions](#Building))_. These build does not require one to have python (and even ffmpeg) installed. You can download them from [here](https://github.com/poseidon-code/ytmp3-dl/releases/tag/v2.1).
+The builds of this program is available for 64-bit versions of Linux and Windows Operating Systems _(macOS users can download the source code and build it by themselves, see [build instructions](#building))_. These build does not require one to have python (and even ffmpeg) installed. You can download them from [here](https://github.com/poseidon-code/ytmp3-dl/releases).
 
 > **[-base-]: Base Version** \
   This version does not includes ffmpeg binaries, and relies on ffmpeg which is already installed in the user's Operating System. _([Download & Install ffmpeg](https://ffmpeg.org/download.html))_
@@ -82,7 +82,7 @@ The builds of this program is available for 64-bit versions of Linux and Windows
 ## Building
 To build ytmp3-dl for your system follow these instructions :\
 **Prerequisites :**
-_(currently tested with these configs only, earlier versions may work too, but no guarantees ;))_
+_(currently tested with these configs only, earlier versions may work too, but no guarantees ;\_\_;)_
 - Python >=3.9
 - pip >=21.2.4
 - pyinstaller >=4.7
@@ -107,7 +107,7 @@ _(currently tested with these configs only, earlier versions may work too, but n
   $ pyinstaller --onefile ytmp3-dl.py
   ```
 **Post Building**
-- After building finishes, the actual executable will be at `dist/` directory. You can always `export` the ytmp3-dl binary `PATH` to your shell. Or can make an `alias` for your shell.
+- After building finishes, the actual executable will be at `dist/` directory. You can always `export` the ytmp3-dl binary `PATH` to your shell. Or can make an `alias` for your shell. _(check on setting `$PATH`, inside **Personal Build Usage**)_
   ```.sh
   # inside .bashrc can either of the following lines
   
@@ -118,6 +118,17 @@ _(currently tested with these configs only, earlier versions may work too, but n
   alias ytmp3='/exact/path/to/ytmp3-dl'
   ```
 - You can also Copy-Paste the ytmp3-dl binary from `dist/` after building to `~/.local/bin/` directory, and make sure you have this directory exported to your shell's `$PATH` variable _(i.e export PATH=$PATH:$HOME/.local/bin)_.
+
+**Personal Build Usage** \
+Since you have build your own **ytmp3-dl** binary for your system, it is also required to have **ffmpeg** installed in your system by your OS's package manager _(i.e.: `sudo pacman -S ffmpeg` for Arch Linux and so on, check for your specific OS)_.
+
+Otherwise you could download the **ffmpeg** binary from [here](https://ffmpeg.org/download.html) and set it to `$PATH` \
+_(check:
+[How to set $PATH for **Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
+[How to set $PATH for **MacOS**](https://stackoverflow.com/questions/22465332/setting-path-environment-variable-in-osx-permanently),
+[How to set $PATH for **Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd)
+)_
+
 
 
 ## Credits
