@@ -16,56 +16,25 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 6.  [License](#license)
 ---
 
-## General
-- The system must have **python** installed and set to the global path. _(downlaod [python](https://www.python.org/downloads/) as per your Operating System. **check** the 'Add Python to system PATH' option while installing in **Windows**)_
+## **General Usage**
+```bash
+$ ytmp3-dl https://youtu.be/dQw4w9WgXcQ
+```
 
-- Download the **ytmp3-dl** folder from [here](https://github.com/poseidon-code/ytmp3-dl/archive/master.zip 'ytmp3-dl').
+You can download set up `ytmp3-dl` as you wish _(see: [script-like](#script-like-usage), [release build](#release-build-usage) usage)_
 
-- Open up **cmd** (**terminal** for Linux/macOS).
+You can build `ytmp3-dl` for your specific system. Check out [build](#build-usage) usage and entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
-- **cd** into the directory where you have downloaded the **ytmp3-dl** folder.
-
-  _**otherwise** if your **DEFAULT** Downloads location is C:\Users\YOUR-PC-NAME\Downloads (as of most Windows PC), then write this in **cmd**._
-
-  ```cmd
-  C:\Users\YOUR-PC-NAME> cd .\Downloads\ytmp3-dl
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl>
-  ```
-
-- Copy the video URL that you want to download. _e.g.: https://www.youtube.com/watch?v=U2NN3tmCVI8_
-
-- While inside the **ytmp3-dl** directory, run the `python ytmp3-dl.py` command:
-
-  ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py
-  ```
-
-  and paste the URL:
-
-  ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py https://www.youtube.com/watch?v=U2NN3tmCVI8
-  ```
-
-  you can add multiple URLs _(just add space between URLs)_:
-
-  ```cmd
-  C:\Users\YOUR-PC-NAME\Downloads\ytmp3-dl> python ytmp3-dl.py https://www.youtube.com/watch?v=U2NN3tmCVI8 https://www.youtube.com/watch?v=kddC4gi72UE
-  ```
-
-  then press **Enter**.
-
-- All the files will be downloaded to the **DEFAULT** Downloads location : _C:\Users\YOUR-PC-NAME\Downloads (as of most Windows OS)_
-
-- You are GOOD NOW 😊
+Pass some options to customise your downloads. _(see: [Options](#options))_
 
 
-## Options
+## **Options**
 You can pass command line options and flags to **ytmp3-dl**.
 | OPTIONS               | USAGE                         | EXAMPLE |
 |-----------------------|-------------------------------|---------|
-| `-d`, `--dir` path    | set download directory        | `$ ytmp3-dl -d ~/Music/ <url>`|
+| `-d`, `--dir` path    | set download directory        | `$ ytmp3-dl -d ~/Music/ <url>` |
 | `-f`, `--ffmpeg` path | set the exact path to ffmpeg  | `$ ytmp3-dl -f ~/.local/bin/ffmpeg <url>` |
-| `-l`, `--limit` number| set concurrent download limit | `$ ytmp3-dl -l 4 <url>`
+| `-l`, `--limit` number| set concurrent download limit | `$ ytmp3-dl -l 4 <url>` |
 
 | FLAGS                 | USAGE                         | EXAMPLE |
 |-----------------------|-------------------------------|---------|
@@ -105,7 +74,7 @@ The builds of this program is available for 64-bit versions of Linux and Windows
 You can build `ytmp3-dl` for your specific system. Check out entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
 
-## Building
+## **Building**
 To build ytmp3-dl for your system follow these instructions :\
 **Prerequisites :**
 _(currently tested with these configs only, earlier versions may work too, but no guarantees ;\_\_;)_
@@ -160,13 +129,13 @@ How to set $PATH for [**Linux**](https://stackoverflow.com/questions/14637979/ho
 
 
 
-## Credits
+## **Credits**
 - _Creator of **yt-dlp** library_ : [yt-dlp](http://github.com/yt-dlp/yt-dlp)
 - _Creator of **ffmpeg**_ : [ffmpeg Team](http://ffmpeg.org)
 
 ---
 
-## License
+## **License**
 MIT License
 
 &copy; poseidon-code 2021
