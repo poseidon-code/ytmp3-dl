@@ -1,6 +1,10 @@
+<div align="center">
+
 # **ytmp3-dl**
 
 This is a python script that uses a specific python package **youtube-dl**. It will download the audio file from any video/audio link provided during the execution of the program, and if necessary converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
+
+</div>
 
 ---
 
@@ -16,6 +20,7 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 6.  [License](#license)
 ---
 
+
 ## **General Usage**
 ```bash
 $ ytmp3-dl https://youtu.be/dQw4w9WgXcQ
@@ -26,6 +31,7 @@ You can download set up `ytmp3-dl` as you wish _(see: [script-like](#script-like
 You can build `ytmp3-dl` for your specific system. Check out [build](#build-usage) usage and entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
 Pass some options to customise your downloads. _(see: [Options](#options))_
+
 
 
 ## **Options**
@@ -39,6 +45,7 @@ You can pass command line options and flags to **ytmp3-dl**.
 | FLAGS                 | USAGE                         | EXAMPLE |
 |-----------------------|-------------------------------|---------|
 | `-h`, `--help`        | list available options        | `$ ytmp3-dl -h` |
+
 
 
 ## Script Like Usage
@@ -74,6 +81,7 @@ The builds of this program is available for 64-bit versions of Linux and Windows
 You can build `ytmp3-dl` for your specific system. Check out entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
 
+
 ## **Building**
 To build ytmp3-dl for your system follow these instructions :\
 **Prerequisites :**
@@ -104,7 +112,7 @@ _(currently tested with these configs only, earlier versions may work too, but n
   ```
 
 **Post Building**
-- After building finishes, the actual executable will be at `dist/` directory. You can always `export` the ytmp3-dl binary `PATH` to your shell. Or can make an `alias` for your shell. _(check on setting `$PATH`, inside **Personal Build Usage**)_
+- After building finishes, the actual executable will be at `dist/` directory. You can always `export` the `ytmp3-dl` binary path to your shell. Or can make an `alias` for your shell. _(check on setting `$PATH`, inside **Personal Build Usage** below)_
   ```.sh
   # inside .bashrc can either of the following lines
   
@@ -122,7 +130,7 @@ Since you have build your own **ytmp3-dl** binary for your system, it is also re
 
 Otherwise you could download the **ffmpeg** binary from [here](https://ffmpeg.org/download.html) and set it to `$PATH` \
 _(check:
-How to set $PATH for [**Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
+How to set `$PATH` for [**Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
 [**MacOS**](https://stackoverflow.com/questions/22465332/setting-path-environment-variable-in-osx-permanently)
 & [**Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd)
 )_
