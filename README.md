@@ -124,9 +124,9 @@ Since you have build your own **ytmp3-dl** binary for your system, it is also re
 
 Otherwise you could download the **ffmpeg** binary from [here](https://ffmpeg.org/download.html) and set it to `$PATH` \
 _(check:
-[How to set $PATH for **Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
-[How to set $PATH for **MacOS**](https://stackoverflow.com/questions/22465332/setting-path-environment-variable-in-osx-permanently),
-[How to set $PATH for **Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd)
+How to set $PATH for [**Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
+[**MacOS**](https://stackoverflow.com/questions/22465332/setting-path-environment-variable-in-osx-permanently)
+& [**Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd)
 )_
 
 
