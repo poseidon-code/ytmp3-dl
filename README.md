@@ -109,29 +109,31 @@ You can build `ytmp3-dl` for your specific system. Check out entire [Building](#
 To build ytmp3-dl for your system follow these instructions :\
 **Prerequisites :**
 _(currently tested with these configs only, earlier versions may work too, but no guarantees ;\_\_;)_
-- Python >=3.9
-- pip >=21.2.4
-- pyinstaller >=4.7
+- `python` >=3.9
+- `pip` >=21.2.4
+- `pyinstaller` >=4.7
 
 **Setup Python Virtual Environment**
-- Inside the project directory, initialise venv, activate it and ensure pip :
+- Inside the project directory, initialise `venv`, activate it and ensure `pip` :
   ```bash
   $ python -m venv env
   $ . ./env/bin/activate
   $ python -m ensurepip
   ```
-- Install pyinstaller
+- Install `pyinstaller`
   ```bash
   $ pip install pyinstaller
   ```
-- Install ytmp3-dl dependencies :
+- Install `ytmp3-dl` dependencies :
   ```bash
   $ pip install -r requirements.txt
   ```
+
 **Start Building**
   ```bash
   $ pyinstaller --onefile ytmp3-dl.py
   ```
+
 **Post Building**
 - After building finishes, the actual executable will be at `dist/` directory. You can always `export` the ytmp3-dl binary `PATH` to your shell. Or can make an `alias` for your shell. _(check on setting `$PATH`, inside **Personal Build Usage**)_
   ```.sh
@@ -143,6 +145,7 @@ _(currently tested with these configs only, earlier versions may work too, but n
   # OR, setting alias 
   alias ytmp3='/exact/path/to/ytmp3-dl'
   ```
+
 - You can also Copy-Paste the ytmp3-dl binary from `dist/` after building to `~/.local/bin/` directory, and make sure you have this directory exported to your shell's `$PATH` variable _(i.e export PATH=$PATH:$HOME/.local/bin)_.
 
 **Personal Build Usage** \
