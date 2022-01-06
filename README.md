@@ -5,9 +5,12 @@ This is a python script that uses a specific python package **youtube-dl**. It w
 ---
 
 ## **Table Of Contents**
-1.  [General](#general)
+1.  [General Usage](#general-usage)
 2.  [Options](#options)
-3.  [Release Builds](#release-builds)
+3.  [Usage](#general-usage)
+    -   [Script Like Usage](#script-like-usage)
+    -   [Release Build Usage](#release-build-usage)
+    -   [Build Usage](#build-usage)
 4.  [Building](#building)
 5.  [Credits](#credits)
 6.  [License](#license)
@@ -69,7 +72,26 @@ You can pass command line options and flags to **ytmp3-dl**.
 | `-h`, `--help`        | list available options        | `$ ytmp3-dl -h` |
 
 
-## Release Builds
+## Script Like Usage
+_(make sure `Python` and `pip` are both installed on your system)_
+- Download `ytmp3-dl` script file only
+  ```bash
+  $ curl -LJO https://raw.githubusercontent.com/poseidon-code/ytmp3-dl/main/ytmp3-dl.py
+  ```
+- Make `ytmp3-dl` executable
+  ```bash
+  $ chmod +x ytmp3-dl.py
+  ```
+- Install `yt-dlp` _(using `pip`)_ and `ffmpeg` _(using your OS's package manager; here: `pacman`)_
+  ```bash
+  $ pip install yt-dlp
+  $ sudo pacman -S ffmpeg
+  ```
+- You are done here 🍵. Additionally you can set the script to global `$PATH` and use it from there.\
+_(check out [General Usage](#general-usage) on how to use the script)_
+
+
+## Release Build Usage
 The builds of this program is available for 64-bit versions of Linux and Windows Operating Systems _(macOS users can download the source code and build it by themselves, see [build instructions](#building))_. These build does not require one to have python (and even ffmpeg) installed. You can download them from [here](https://github.com/poseidon-code/ytmp3-dl/releases).
 
 > **[-base-]: Base Version** \
@@ -77,6 +99,10 @@ The builds of this program is available for 64-bit versions of Linux and Windows
 
 > **[-essentials-]: Essentials Version** \
   This version comes with compatible ffmpeg binaries, and does not relies on ffmpeg being installed on the Operating System. _(**i.e.** If you don't want to go with the hassel of downloading, installing, setting PATH for ffmpeg, then go with this version.)_
+
+
+## Build Usage
+You can build `ytmp3-dl` for your specific system. Check out entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
 
 ## Building
