@@ -1,10 +1,9 @@
 <div align="center">
 
 ![ytmp3-dl](./assets/ytmp3-dl.jpg)
-
-This is a python script that uses a specific python package [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) _(fork of [**youtube-dl**](https://github.com/ytdl-org/youtube-dl))_. It will download the audio file from any video/audio link provided during the execution of the program, and if necessary converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
-
 ![ytmp3-dl usage](./assets/ytmp3-dl.gif)
+
+This is a python script that uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) _(fork of [**youtube-dl**](https://github.com/ytdl-org/youtube-dl))_. It will download the audio from any YouTube video/audio link while executing the program, and converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
 
 </div>
 
