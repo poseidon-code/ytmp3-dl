@@ -3,7 +3,7 @@
 ![ytmp3-dl](./assets/ytmp3-dl.jpg)
 ![ytmp3-dl usage](./assets/ytmp3-dl.gif)
 
-This is a python script that uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) _(fork of [**youtube-dl**](https://github.com/ytdl-org/youtube-dl))_. It will download the audio from any YouTube video/audio link while executing the program, and converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
+A python script that uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) _(fork of [**youtube-dl**](https://github.com/ytdl-org/youtube-dl))_ to download the audio from any YouTube video/audio link while executing the program, and converts it to **.mp3** format of high quality. Downloads are done in a multithreaded way, so faster downloads ⚡.
 
 </div>
 
@@ -49,7 +49,7 @@ You can pass command line options and flags to **ytmp3-dl**.
 
 
 
-## Script Like Usage
+### Script Like Usage
 _(make sure `Python` and `pip` are both installed on your system)_
 - Download `ytmp3-dl` script file only
   ```bash
@@ -68,7 +68,7 @@ _(make sure `Python` and `pip` are both installed on your system)_
 _(check out [General Usage](#general-usage) on how to use the script)_
 
 
-## Release Build Usage
+### Release Build Usage
 The builds of this program is available for 64-bit versions of Linux and Windows Operating Systems _(macOS users can download the source code and build it by themselves, see [build instructions](#building))_. These build does not require one to have python (and even ffmpeg) installed. You can download them from [here](https://github.com/poseidon-code/ytmp3-dl/releases).
 
 > **[-base-]: Base Version** \
@@ -78,7 +78,7 @@ The builds of this program is available for 64-bit versions of Linux and Windows
   This version comes with compatible ffmpeg binaries, and does not relies on ffmpeg being installed on the Operating System. _(**i.e.** If you don't want to go with the hassel of downloading, installing, setting PATH for ffmpeg, then go with this version.)_
 
 
-## Build Usage
+### Build Usage
 You can build `ytmp3-dl` for your specific system. Check out entire [Building](#building) section to build your version of `ytmp3-dl` and how to use it more effectively.
 
 
@@ -133,8 +133,7 @@ Otherwise you could download the **ffmpeg** binary from [here](https://ffmpeg.or
 _(check:
 How to set `$PATH` for [**Linux**](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix),
 [**MacOS**](https://stackoverflow.com/questions/22465332/setting-path-environment-variable-in-osx-permanently)
-& [**Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd)
-)_
+& [**Windows**](https://stackoverflow.com/questions/24219627/how-to-update-system-path-variable-permanently-from-cmd))_
 
 
 
