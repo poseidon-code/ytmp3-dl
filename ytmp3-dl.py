@@ -3,8 +3,10 @@
 import concurrent.futures
 import os
 import platform
+import shutil
 import sys
 from getopt import GetoptError, getopt
+from pathlib import Path
 from typing import List, Tuple
 
 import yt_dlp
@@ -52,9 +54,9 @@ def get_ffmpeg_path(path=''):
         else : print(f"{color.ERROR}ffmpeg at `{path}` NOT FOUND{color.ENDC}"); exit(0)
 
     # else if, use the ffmpeg which is already installed by some Operating System's package manager
-    elif os.path.exists('/usr/bin/ffmpeg'):
-        return '/usr/bin/ffmpeg'
-
+    elif shutil.which('ffmpeg') != None:
+        return shutil.which('ffmpeg')
+    
     # else if, use the ffmpeg binaries present with this project
     elif os.path.exists(f'{os.path.abspath(os.getcwd())}/ffmpeg'):
         if platform.system() == 'Windows':
@@ -126,7 +128,7 @@ def print_status():
 
 
 
-'''Downloading mp3 for every YouTube video URL passed during execution'''
+''' Downloading mp3 for every YouTube video URL passed during execution '''
 def download(url):
     with yt_dlp.YoutubeDL(yt_dlp_options) as mp3:
         info = mp3.extract_info(url, download=False)
@@ -180,7 +182,7 @@ else:
         if option in ['-l', '--limit'] : 
             try : limit = int(value)
             except ValueError:
-                print(f"{color.ERROR}Invalid limit '{value}'{color.ENDC} (using default 2)")
+                print(f"{color.ERROR}Invalid download limit '{value}'{color.ENDC} (using default 2)")
                 limit = 2
                 pass
         else : limit = 2
